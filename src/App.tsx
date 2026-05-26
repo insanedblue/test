@@ -17,18 +17,43 @@ export function App() {
   return (
     <>
       <AppShell
-        header={{ height: 60 }}
+        header={{ height: 64 }}
         navbar={{
-          width: 240,
+          width: 220,
           breakpoint: 'sm',
           collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
         }}
-        padding="md"
+        padding="lg"
+        styles={{
+          header: {
+            backgroundColor: '#ffffff',
+            borderBottom: '1px solid #E8E8F0',
+          },
+          navbar: {
+            backgroundColor: '#1A1A2E',
+            borderRight: '1px solid #2A2A40',
+          },
+          main: {
+            backgroundColor: '#F8F8FC',
+          },
+        }}
       >
         <AppShell.Header>
           <Group h="100%" px="md" gap="xs">
-            <Burger opened={mobileOpened} onClick={toggleMobile} hiddenFrom="sm" size="sm" />
-            <Burger opened={desktopOpened} onClick={toggleDesktop} visibleFrom="sm" size="sm" />
+            <Burger
+              opened={mobileOpened}
+              onClick={toggleMobile}
+              hiddenFrom="sm"
+              size="sm"
+              color="#7800FF"
+            />
+            <Burger
+              opened={desktopOpened}
+              onClick={toggleDesktop}
+              visibleFrom="sm"
+              size="sm"
+              color="#7800FF"
+            />
             <Header />
           </Group>
         </AppShell.Header>
