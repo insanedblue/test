@@ -27,19 +27,25 @@ export function KanbanCard({ task, overlay = false }: Props) {
   return (
     <Card
       ref={setNodeRef}
-      style={style}
+      style={{
+        ...style,
+        borderLeft: overlay ? '3px solid #7800FF' : '3px solid transparent',
+        transition: 'border-left-color 0.15s',
+      }}
       withBorder
-      radius="md"
+      radius="sm"
       p="sm"
       shadow={overlay ? 'lg' : undefined}
       onClick={() => !overlay && openTaskModal(task.id)}
       className="kanban-card"
+      onMouseEnter={(e) => { if (!overlay) (e.currentTarget as HTMLElement).style.borderLeftColor = '#7800FF'; }}
+      onMouseLeave={(e) => { if (!overlay) (e.currentTarget as HTMLElement).style.borderLeftColor = 'transparent'; }}
     >
       <Group gap={4} mb={6} wrap="nowrap">
         <div
           {...attributes}
           {...listeners}
-          style={{ cursor: 'grab', color: 'var(--mantine-color-gray-5)', flexShrink: 0 }}
+          style={{ cursor: 'grab', color: '#C4A0FF', flexShrink: 0 }}
           onClick={(e) => e.stopPropagation()}
         >
           <GripVertical size={14} />
@@ -57,7 +63,7 @@ export function KanbanCard({ task, overlay = false }: Props) {
 
       <Group gap={4} mb={6} wrap="wrap">
         {task.tags.slice(0, 3).map((tag) => (
-          <Badge key={tag} size="xs" variant="outline" color="gray">
+          <Badge key={tag} size="xs" variant="light" color="violet" radius="sm">
             {tag}
           </Badge>
         ))}

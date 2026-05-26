@@ -16,7 +16,7 @@ interface Props {
 
 export function PriorityBadge({ priority, size = 'sm' }: Props) {
   return (
-    <Badge color={priorityColors[priority]} size={size} variant="light">
+    <Badge color={priorityColors[priority]} size={size} variant="filled" radius="sm">
       {labels[priority]}
     </Badge>
   );

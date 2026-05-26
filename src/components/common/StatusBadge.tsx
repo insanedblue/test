@@ -15,7 +15,7 @@ interface Props {
 
 export function StatusBadge({ status, size = 'sm' }: Props) {
   return (
-    <Badge color={statusColors[status]} size={size} variant="light">
+    <Badge color={statusColors[status]} size={size} variant="filled" radius="sm">
       {labels[status]}
     </Badge>
   );

@@ -13,6 +13,12 @@ const COLUMN_LABELS: Record<TaskStatus, string> = {
   done: '완료',
 };
 
+const COLUMN_TOP_COLOR: Record<TaskStatus, string> = {
+  todo: '#9CA3AF',
+  in_progress: '#7800FF',
+  done: '#0D9488',
+};
+
 interface Props {
   status: TaskStatus;
   tasks: Task[];
@@ -44,15 +50,14 @@ export function KanbanColumn({ status, tasks }: Props) {
 
       <Paper
         ref={setNodeRef}
-        radius="md"
+        radius="sm"
         p="sm"
         withBorder
         style={{
           minHeight: 120,
           flex: 1,
-          backgroundColor: isOver
-            ? 'var(--mantine-color-blue-0)'
-            : 'var(--mantine-color-gray-0)',
+          backgroundColor: isOver ? 'rgba(120,0,255,0.06)' : '#ffffff',
+          borderTop: `3px solid ${COLUMN_TOP_COLOR[status]}`,
           transition: 'background-color 0.15s',
         }}
       >
