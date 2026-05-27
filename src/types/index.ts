@@ -78,4 +78,5 @@ export interface UIStoreState {
   openModalType: 'task' | 'project' | null;
   editingTaskId: string | null;
   editingProjectId: string | null;
+  deleteConfirmProjectId: string | null;
 }

@@ -17,6 +17,8 @@ interface UIActions {
   setGanttViewMode: (mode: ViewMode) => void;
   setFilters: (patch: Partial<TaskFilters>) => void;
   resetFilters: () => void;
+  openDeleteConfirm: (projectId: string) => void;
+  closeDeleteConfirm: () => void;
 }
 
 export const useUIStore = create<UIStoreState & UIActions>()((set) => ({
@@ -26,6 +28,7 @@ export const useUIStore = create<UIStoreState & UIActions>()((set) => ({
   openModalType: null,
   editingTaskId: null,
   editingProjectId: null,
+  deleteConfirmProjectId: null,
 
   setActiveProject: (id) => set({ activeProjectId: id }),
   openTaskModal: (taskId) => set({ openModalType: 'task', editingTaskId: taskId ?? null }),
@@ -34,4 +37,6 @@ export const useUIStore = create<UIStoreState & UIActions>()((set) => ({
   setGanttViewMode: (mode) => set({ ganttViewMode: mode }),
   setFilters: (patch) => set((s) => ({ filters: { ...s.filters, ...patch } })),
   resetFilters: () => set({ filters: defaultFilters }),
+  openDeleteConfirm: (projectId) => set({ deleteConfirmProjectId: projectId }),
+  closeDeleteConfirm: () => set({ deleteConfirmProjectId: null }),
 }));
